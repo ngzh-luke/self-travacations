@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travacations</title>
+  </head>
+
+  <body onload="setLangView()">
+    <en-con lang="en">This is English written sentence.</en-con>
+    <th-con lang="th">ประโยคภาษาไทย</th-con>
+    <th-con lang="th">ประโยคภาษาไทย 2</th-con>
+    <button onclick="setLangView('th')">change to TH</button>
+    <button onclick="setLangView()">change to EN</button>
+  </body>
+  <script>
+    function setLangView(language = "en") {
+      const THcon = document.getElementsByTagName("th-con");
+      const ENcon = document.getElementsByTagName("en-con");
+      const size = THcon.length > ENcon.length ? THcon.length : ENcon.length; // get biggest size
+      console.log(size);
+      for (let i = 0; i < size; i++) {
+        if (language != "en") {
+          // not en
+          try {
+            // prevent out of index err or other err
+            THcon[i].style.display = "block";
+            ENcon[i].style.display = "none";
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          // en
+          try {
+            // prevent out of index err or other err
+            THcon[i].style.display = "none";
+            ENcon[i].style.display = "block";
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      }
+    }
+  </script>
+</html>
